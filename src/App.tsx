@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import Gauge from './components/Gauge'
 import './App.css'
+import CanvasChart from './components/CanvasChart'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-        <Gauge/>
+      <CanvasChart />
     </div>
   )
 }
