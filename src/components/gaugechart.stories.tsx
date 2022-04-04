@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import GaugeChart, { GaugeChartProps } from '../components/gaugechrt';
+import GaugeChart, { GaugeChartProps } from './gaugechrt';
 
 export default {
   title: 'Charts/GaugeChart',
