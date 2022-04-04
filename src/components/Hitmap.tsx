@@ -5,29 +5,29 @@ import { HeatMapGrid } from 'react-grid-heatmap'
 export interface HitmapProps {
     size?: string;
     colors?: Array<string>;
-    data?: Array<Array<Number>>;
+    data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
     yLabels?: Array<string | any>;
 }
 
 
-const xLabels = new Array(12).fill(0).map((_, i) => `${i}`)
-const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
-const data = new Array(yLabels.length)
-    .fill(0)
-    .map(() =>
-        new Array(xLabels.length)
-            .fill(0)
-            .map(() => Math.floor(Math.random() * 50 + 50))
-    )
+// const xLabels = new Array(12).fill(0).map((_, i) => `${i}`)
+// const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+// const colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162']
+// const data = new Array(yLabels.length)
+//     .fill(0)
+//     .map(() =>
+//         new Array(xLabels.length)
+//             .fill(0)
+//             .map(() => Math.floor(Math.random() * 50 + 50))
+//     )
 
-console.log("Data =", data)
 
-const Hitmap = () => {
+const Hitmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels }: HitmapProps) => {
     return (
         <div
             style={{
-                width: '50vw'
+                width: `${size}vw`
             }}
         >
             <HeatMapGrid
@@ -50,13 +50,15 @@ const Hitmap = () => {
                     marginRight: '5px'
                 })}
                 cellStyle={(_x, _y, ratio) => ({
-                    background: `rgb(12, 160, 44, ${ratio})`,
+                    background: ratio > 0.66 ? `rgb(${colors[0]})` : ratio > 0.33 ? `rgb(${colors[1]})` : `rgb(${colors[2]})`,
+                    // background: `rgb(12, 160, 44, ${ratio})`,
                     fontSize: '.8rem',
-                    color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`
+                    color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`,
+                    borderRadius: 0
                 })}
                 cellHeight='2rem'
                 xLabelsPos='bottom'
-                onClick={(x, y) => alert(`Clicked (${x}, ${y})`)}
+                // onClick={(x, y) => alert(`Clicked (${x}, ${y})`)}
                 yLabelsPos='left'
             // square
             />
