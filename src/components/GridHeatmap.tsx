@@ -40,7 +40,7 @@ const colorPlates = (colors: Array<string>) => {
                     colors.map((item, index) => {
                         return (
                             <>
-                                <div style={{...colorItem, backgroundColor:`rgb(${item})`}}>
+                                <div style={{...colorItem, backgroundColor:`${item}`}}>
                                 </div>
                                 <p>Test {(index+1)}</p>
                             </>
@@ -81,7 +81,7 @@ const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 16
                     marginRight: '5px'
                 })}
                 cellStyle={(_x, _y, ratio) => ({
-                    background: ratio > 0.66 ? `rgb(${colors[0]})` : ratio > 0.33 ? `rgb(${colors[1]})` : `rgb(${colors[2]})`,
+                    background: ratio > 0.66 ? `${colors[0]}` : ratio > 0.33 ? `${colors[1]}` : `${colors[2]}`,
                     // background: `rgb(12, 160, 44, ${ratio})`,
                     fontSize: '.8rem',
                     color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`,

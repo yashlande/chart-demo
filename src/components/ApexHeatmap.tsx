@@ -62,76 +62,13 @@ function ApexHeatmap() {
                 max: 90
             })
         },
-        {
-            name: 'W7',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W8',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W9',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W10',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W11',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W12',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W13',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W14',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W15',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        }
     ]
 
     data.reverse()
 
     var colors = ["#E62B47","#FF6E84","#FFCBD3"]
 
-    colors.reverse()
+    // colors.reverse()
 
     const [state, setState] = useState({
         series: data,
@@ -149,7 +86,7 @@ function ApexHeatmap() {
                 categories: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '01:00', '01:30']
             },
             title: {
-                text: 'HeatMap Chart (Different color shades for each series)'
+                // text: 'HeatMap Chart (Different color shades for each series)'
             },
             grid: {
                 padding: {
@@ -160,7 +97,7 @@ function ApexHeatmap() {
     })
     return (
         <div>
-            <Chart options={state.options} series={state.series} type="heatmap" width={500} height={400}/>
+            <Chart options={state.options} series={state.series} type="heatmap" width={800} height={300}/>
         </div>
     )
 }
