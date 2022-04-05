@@ -17,14 +17,6 @@ const data = new Array(yLabels.length)
 export default {
   title: 'Charts/GridHeatmap',
   component: GridHeatmap,
-  parameters: {
-    previewTabs: {
-        canvas: {
-            hidden: true,
-        },
-    },
-    viewMode: 'docs',
-  }
 } as Meta;
 
 const Template: Story<HeatmapProps> = (args) => <GridHeatmap {...args} />;
@@ -32,7 +24,7 @@ const Template: Story<HeatmapProps> = (args) => <GridHeatmap {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   size: '50',
-  colors: ['163, 1, 1', '244, 40, 40', '247, 162, 162'],
+  colors: ['#E62B47', '#FF6E84', '#FFCBD3'],
   data,
   xLabels,
   yLabels
