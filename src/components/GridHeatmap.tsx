@@ -1,9 +1,9 @@
 import React from 'react'
 import { HeatMapGrid } from 'react-grid-heatmap'
-import './Hitmap.css'
+import './GridHeatmap.css'
 
 
-export interface HitmapProps {
+export interface HeatmapProps {
     size?: string;
     colors?: Array<string>;
     data?: Array<Array<Number>> | any;
@@ -26,9 +26,9 @@ export interface HitmapProps {
 // ,width:'13px',height:'13px',borderRadius:'20%'
 
 const colorItem={
-    width:'13px',
-    height:'13px',
-    borderRadius:'20%',
+    width:'13.2px',
+    height:'13.2px',
+    borderRadius:'3.51971px',
     marginLeft:'5px'
 }
 
@@ -53,7 +53,7 @@ const colorPlates = (colors: Array<string>) => {
 }
 
 
-const Hitmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels }: HitmapProps) => {
+const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels }: HeatmapProps) => {
     return (
         <div
             style={{
@@ -97,4 +97,4 @@ const Hitmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], 
     )
 }
 
-export default Hitmap
+export default GridHeatmap

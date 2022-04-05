@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import CanvasChart from './components/CanvasChart'
-import Hitmap from './components/Hitmap'
+import ApexHeatmap from './components/ApexHeatmap'
+// import CanvasChart from './components/CanvasChart'
+// import GridHeatmap from './components/GridHeatmap'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       {/* <CanvasChart /> */}
       {/* <Hitmap/> */}
+      <ApexHeatmap />
     </div>
   )
 }
