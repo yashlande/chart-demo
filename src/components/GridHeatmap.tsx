@@ -85,7 +85,11 @@ const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 16
                     // background: `rgb(12, 160, 44, ${ratio})`,
                     fontSize: '.8rem',
                     color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`,
-                    borderRadius: 0
+                    borderRadius: 0,
+                    // margin: '2.63978px 0px'
+                    width:'48.4px',
+                    height:'30.8px'
+
                 })}
                 cellHeight='2rem'
                 xLabelsPos='bottom'
