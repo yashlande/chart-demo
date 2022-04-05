@@ -1,5 +1,6 @@
 import React from 'react'
 import { HeatMapGrid } from 'react-grid-heatmap'
+import './Hitmap.css'
 
 
 export interface HitmapProps {
@@ -22,6 +23,35 @@ export interface HitmapProps {
 //             .map(() => Math.floor(Math.random() * 50 + 50))
 //     )
 
+// ,width:'13px',height:'13px',borderRadius:'20%'
+
+const colorItem={
+    width:'13px',
+    height:'13px',
+    borderRadius:'20%',
+    marginLeft:'5px'
+}
+
+const colorPlates = (colors: Array<string>) => {
+    return (
+        <>
+            <div className="colorPlate">
+                {
+                    colors.map((item, index) => {
+                        return (
+                            <>
+                                <div style={{...colorItem, backgroundColor:`rgb(${item})`}}>
+                                </div>
+                                <p>Test {(index+1)}</p>
+                            </>
+                        )
+                    })
+                }
+            </div>
+        </>
+    )
+}
+
 
 const Hitmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels }: HitmapProps) => {
     return (
@@ -30,6 +60,7 @@ const Hitmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], 
                 width: `${size}vw`
             }}
         >
+            {colorPlates(colors)}
             <HeatMapGrid
                 data={data}
                 xLabels={xLabels}
