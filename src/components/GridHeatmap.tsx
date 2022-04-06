@@ -9,14 +9,18 @@ export interface HeatmapProps {
     data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
     yLabels?: Array<string | any>;
+    cellSize: {
+        width: string,
+        height: string
+    };
 }
 
 
-const colorItem={
-    width:'13.2px',
-    height:'13.2px',
-    borderRadius:'3.51971px',
-    marginLeft:'5px'
+const colorItem = {
+    width: '13.2px',
+    height: '13.2px',
+    borderRadius: '3.51971px',
+    marginLeft: '5px'
 }
 
 const colorPlates = (colors: Array<string>) => {
@@ -27,9 +31,9 @@ const colorPlates = (colors: Array<string>) => {
                     colors.map((item, index) => {
                         return (
                             <>
-                                <div style={{...colorItem, backgroundColor:`${item}`}}>
+                                <div style={{ ...colorItem, backgroundColor: `${item}` }}>
                                 </div>
-                                <p>Test {(index+1)}</p>
+                                <p>Test {(index + 1)}</p>
                             </>
                         )
                     })
@@ -40,11 +44,12 @@ const colorPlates = (colors: Array<string>) => {
 }
 
 
-const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels }: HeatmapProps) => {
+const GridHeatmap = ({ colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels, cellSize }: HeatmapProps) => {
     return (
         <div
             style={{
-                width: `${size}vw`
+                // width: `${size}vw`
+                width: 'max-content'
             }}
         >
             {colorPlates(colors)}
@@ -68,12 +73,10 @@ const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 16
                 })}
                 cellStyle={(_x, _y, ratio) => ({
                     background: ratio > 0.66 ? `${colors[0]}` : ratio > 0.33 ? `${colors[1]}` : `${colors[2]}`,
-                    fontSize: '.8rem',
-                    color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`,
                     borderRadius: 0,
                     // margin: '2.63978px 0px',
-                    width:'48.4px',
-                    height:'30.8px'
+                    width: cellSize.width,
+                    height: cellSize.height,
 
                 })}
                 cellHeight='2rem'

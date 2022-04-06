@@ -1,78 +1,46 @@
 import React, { useState } from 'react'
 import Chart from 'react-apexcharts'
 
-function ApexHeatmap() {
+export interface ApexHeatmapProps {
+    chartSize?: {
+        width: number,
+        height: number
+    };
+    colors?: Array<string>;
+    data?: Array<Array<Number>> | any;
+    xLabels?: Array<string | any>;
+}
 
-    function generateData(count: Number, yrange: any) {
-        var i = 0;
-        var series = [];
-        while (i < count) {
-            var x = (i + 1).toString();
-            var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
-            series.push({
-                x: x,
-                y: y
-            });
-            i++;
-        }
-        return series;
-    }
-
-    var data = [
-        {
-            name: 'W1',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W2',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W3',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W4',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W5',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-        {
-            name: 'W6',
-            data: generateData(8, {
-                min: 0,
-                max: 90
-            })
-        },
-    ]
-
-    data.reverse()
-
-    var colors = ["#E62B47","#FF6E84","#FFCBD3"]
-
-    // colors.reverse()
+function ApexHeatmap({ chartSize, colors=["#E62B47", "#FF6E84", "#FFCBD3"], data, xLabels }: ApexHeatmapProps) {
 
     const [state, setState] = useState({
         series: data,
         options: {
+            plotOptions: {
+                heatmap: {
+                    colorScale: {
+                        ranges: [{
+                            from: -30,
+                            to: 33,
+                            color: colors[2],
+                            name: 'low',
+                        },
+                        {
+                            from: 33,
+                            to: 66,
+                            color: colors[1],
+                            name: 'medium',
+                        },
+                        {
+                            from: 66,
+                            to: 100,
+                            color: colors[0],
+                            name: 'high',
+                        }
+                        ]
+                    }
+                }
+            },
             chart: {
                 // height: 450,
                 type: 'heatmap',
@@ -83,7 +51,7 @@ function ApexHeatmap() {
             colors: colors,
             xaxis: {
                 type: 'category',
-                categories: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '01:00', '01:30']
+                categories: xLabels
             },
             title: {
                 // text: 'HeatMap Chart (Different color shades for each series)'
@@ -97,7 +65,7 @@ function ApexHeatmap() {
     })
     return (
         <div>
-            <Chart options={state.options} series={state.series} type="heatmap" width={800} height={300}/>
+            <Chart options={state.options} series={state.series} type="heatmap" width={chartSize?.width} height={chartSize?.height} />
         </div>
     )
 }
