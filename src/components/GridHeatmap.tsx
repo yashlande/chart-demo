@@ -1,6 +1,7 @@
 import React from 'react'
 import { HeatMapGrid } from 'react-grid-heatmap'
 import './GridHeatmap.css'
+import { Typography } from '@mui/material';
 
 interface color {
     name?: string,
@@ -38,7 +39,7 @@ const colorPlates = (colors: Array<color>) => {
                             <>
                                 <div style={{ ...colorItem, backgroundColor: `${item.color_code}` }}>
                                 </div>
-                                <p>{item.name}</p>
+                                <Typography variant='subtitle2'>{item.name}</Typography>
                             </>
                         )
                     })

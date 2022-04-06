@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
 import Chart from 'react-apexcharts'
 
+interface rangeColor {
+    from: number;
+    to: number;
+    color: string;
+    name: string;
+}
+
 export interface ApexHeatmapProps {
     chartSize?: {
         width: number,
         height: number
     };
+    showToolbar: boolean;
     colors?: Array<string>;
     data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
+    rangeColors?:Array<rangeColor>;
 }
 
-function ApexHeatmap({ chartSize, colors=["#E62B47", "#FF6E84", "#FFCBD3"], data, xLabels }: ApexHeatmapProps) {
+function ApexHeatmap({ chartSize, colors = ["#E62B47", "#FF6E84", "#FFCBD3"], data, xLabels, showToolbar, rangeColors }: ApexHeatmapProps) {
 
     const [state, setState] = useState({
         series: data,
@@ -19,31 +28,18 @@ function ApexHeatmap({ chartSize, colors=["#E62B47", "#FF6E84", "#FFCBD3"], data
             plotOptions: {
                 heatmap: {
                     colorScale: {
-                        ranges: [{
-                            from: -30,
-                            to: 33,
-                            color: colors[2],
-                            name: 'low',
-                        },
-                        {
-                            from: 33,
-                            to: 66,
-                            color: colors[1],
-                            name: 'medium',
-                        },
-                        {
-                            from: 66,
-                            to: 100,
-                            color: colors[0],
-                            name: 'high',
-                        }
-                        ]
+                        ranges: rangeColors
                     }
                 }
             },
             chart: {
                 // height: 450,
                 type: 'heatmap',
+                toolbar: {
+                    show: showToolbar,
+                    offsetX: 0,
+                    offsetY: 0,
+                }
             },
             dataLabels: {
                 enabled: false

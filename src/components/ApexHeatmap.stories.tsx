@@ -165,5 +165,26 @@ Default.args = {
     },
     colors,
     data: data3,
-    xLabels
+    xLabels,
+    showToolbar: false,
+    
+    rangeColors: [{
+        from: -30,
+        to: 33,
+        color: colors[2],
+        name: 'low',
+    },
+    {
+        from: 33,
+        to: 66,
+        color: colors[1],
+        name: 'medium',
+    },
+    {
+        from: 66,
+        to: 100,
+        color: colors[0],
+        name: 'high',
+    }
+    ]
 }
