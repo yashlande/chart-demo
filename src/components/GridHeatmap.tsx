@@ -12,19 +12,6 @@ export interface HeatmapProps {
 }
 
 
-// const xLabels = new Array(12).fill(0).map((_, i) => `${i}`)
-// const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
-// const colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162']
-// const data = new Array(yLabels.length)
-//     .fill(0)
-//     .map(() =>
-//         new Array(xLabels.length)
-//             .fill(0)
-//             .map(() => Math.floor(Math.random() * 50 + 50))
-//     )
-
-// ,width:'13px',height:'13px',borderRadius:'20%'
-
 const colorItem={
     width:'13.2px',
     height:'13.2px',
@@ -70,7 +57,6 @@ const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 16
                 //   <div title={`Pos(${x}, ${y}) = ${value}`}>{value}</div>
                 // )}
                 xLabelsStyle={(index) => ({
-                    //   color: index % 2 ? 'transparent' : '#777',
                     color: 'black',
                     fontSize: '.8rem'
                 })}
@@ -82,11 +68,10 @@ const GridHeatmap = ({ size, colors = ['163, 1, 1', '244, 40, 40', '247, 162, 16
                 })}
                 cellStyle={(_x, _y, ratio) => ({
                     background: ratio > 0.66 ? `${colors[0]}` : ratio > 0.33 ? `${colors[1]}` : `${colors[2]}`,
-                    // background: `rgb(12, 160, 44, ${ratio})`,
                     fontSize: '.8rem',
                     color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`,
                     borderRadius: 0,
-                    // margin: '2.63978px 0px'
+                    // margin: '2.63978px 0px',
                     width:'48.4px',
                     height:'30.8px'
 
