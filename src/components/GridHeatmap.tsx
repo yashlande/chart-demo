@@ -2,10 +2,15 @@ import React from 'react'
 import { HeatMapGrid } from 'react-grid-heatmap'
 import './GridHeatmap.css'
 
+interface color {
+    name?: string,
+    color_code?: string
+}
 
 export interface HeatmapProps {
     size?: string;
-    colors?: Array<string>;
+    // colors?: Array<string>;
+    colors?: Array<color>;
     data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
     yLabels?: Array<string | any>;
@@ -23,7 +28,7 @@ const colorItem = {
     marginLeft: '5px'
 }
 
-const colorPlates = (colors: Array<string>) => {
+const colorPlates = (colors: Array<color>) => {
     return (
         <>
             <div className="colorPlate">
@@ -31,9 +36,9 @@ const colorPlates = (colors: Array<string>) => {
                     colors.map((item, index) => {
                         return (
                             <>
-                                <div style={{ ...colorItem, backgroundColor: `${item}` }}>
+                                <div style={{ ...colorItem, backgroundColor: `${item.color_code}` }}>
                                 </div>
-                                <p>Test {(index + 1)}</p>
+                                <p>{item.name}</p>
                             </>
                         )
                     })
@@ -43,8 +48,20 @@ const colorPlates = (colors: Array<string>) => {
     )
 }
 
+const defaultColors = [
+    {
+        name: 'Test 1', color_code: '#E62B47'
+    },
+    {
+        name: 'Test 2', color_code: '#FF6E84'
+    },
+    {
+        name: 'Test 3', color_code: '#FFCBD3'
+    }
+]
 
-const GridHeatmap = ({ colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], data, xLabels, yLabels, cellSize }: HeatmapProps) => {
+
+const GridHeatmap = ({ colors = defaultColors, data, xLabels, yLabels, cellSize }: HeatmapProps) => {
     return (
         <div
             style={{
@@ -72,7 +89,7 @@ const GridHeatmap = ({ colors = ['163, 1, 1', '244, 40, 40', '247, 162, 162'], d
                     marginRight: '5px'
                 })}
                 cellStyle={(_x, _y, ratio) => ({
-                    background: ratio > 0.66 ? `${colors[0]}` : ratio > 0.33 ? `${colors[1]}` : `${colors[2]}`,
+                    background: ratio > 0.66 ? `${colors[0].color_code}` : ratio > 0.33 ? `${colors[1].color_code}` : `${colors[2].color_code}`,
                     borderRadius: 0,
                     // margin: '2.63978px 0px',
                     width: cellSize.width,

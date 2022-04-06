@@ -24,7 +24,17 @@ const Template: Story<HeatmapProps> = (args) => <GridHeatmap {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   // size: '50',
-  colors: ['#E62B47', '#FF6E84', '#FFCBD3'],
+  colors: [
+    {
+      name: 'Test 1', color_code: '#E62B47'
+    },
+    {
+      name: 'Test 2', color_code: '#FF6E84'
+    },
+    {
+      name: 'Test 3', color_code: '#FFCBD3'
+    }
+  ],
   data,
   xLabels,
   yLabels,
