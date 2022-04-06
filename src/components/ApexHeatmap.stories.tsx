@@ -172,19 +172,19 @@ Default.args = {
         from: -30,
         to: 33,
         color: colors[2],
-        name: 'low',
+        name: 'Low',
     },
     {
         from: 33,
         to: 66,
         color: colors[1],
-        name: 'medium',
+        name: 'Medium',
     },
     {
         from: 66,
         to: 100,
         color: colors[0],
-        name: 'high',
+        name: 'High',
     }
     ]
 }
