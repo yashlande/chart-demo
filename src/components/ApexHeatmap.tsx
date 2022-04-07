@@ -1,6 +1,6 @@
-import { Typography } from '@mui/material';
-import React, { useState } from 'react'
+import { Box, Typography } from '@mui/material';
 import Chart from 'react-apexcharts'
+import './ApexHeatmap.css'
 
 interface rangeColor {
     from: number;
@@ -10,48 +10,38 @@ interface rangeColor {
 }
 
 export interface ApexHeatmapProps {
-    chartSize?: {
+    size?: {
         width: number,
         height: number
     };
     showToolbar: boolean;
-    // colors?: Array<string>;
     data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
     rangeColors?:Array<rangeColor>;
 }
 
-
-const colorItem = {
-    width: '13.2px',
-    height: '13.2px',
-    borderRadius: '3.51971px',
-    marginLeft: '17px',
-}
-
-
 const colorPlates = (colors: Array<rangeColor>) => {
     return (
         <>
-            <div className="colorPlate">
+            <Box className="apex__legendContainer">
                 {
                     colors.map((item) => {
                         return (
                             <>
-                                <div style={{ ...colorItem, backgroundColor: `${item.color}` }}>
-                                </div>
+                                <Box className='apex__legendItem' style={{ backgroundColor: `${item.color}` }}>
+                                </Box>
                                 <Typography variant='subtitle2'>{item.name}</Typography>
                             </>
                         )
                     })
                 }
-            </div>
+            </Box>
         </>
     )
 }
 
 
-function ApexHeatmap({ chartSize, data, xLabels, showToolbar, rangeColors }: ApexHeatmapProps) {
+function ApexHeatmap({ size, data, xLabels, showToolbar, rangeColors }: ApexHeatmapProps) {
 
     const configure={
         series: data,
@@ -64,8 +54,6 @@ function ApexHeatmap({ chartSize, data, xLabels, showToolbar, rangeColors }: Ape
                 }
             },
             chart: {
-                // height: 450,
-                type: 'heatmap',
                 toolbar: {
                     show: showToolbar,
                     offsetX: 0,
@@ -78,13 +66,8 @@ function ApexHeatmap({ chartSize, data, xLabels, showToolbar, rangeColors }: Ape
             dataLabels: {
                 enabled: false
             },
-            // colors: colors,
             xaxis: {
-                type: 'category',
                 categories: xLabels
-            },
-            title: {
-                // text: 'HeatMap Chart (Different color shades for each series)'
             },
             grid: {
                 padding: {
@@ -94,10 +77,10 @@ function ApexHeatmap({ chartSize, data, xLabels, showToolbar, rangeColors }: Ape
         },
     }
     return (
-        <div>
+        <Box>
             {colorPlates(rangeColors!)}
-            <Chart options={configure.options} series={configure.series} type="heatmap" width={chartSize?.width} height={chartSize?.height} />
-        </div>
+            <Chart options={configure.options} series={configure.series} type="heatmap" width={size?.width} height={size?.height} />
+        </Box>
     )
 }
 

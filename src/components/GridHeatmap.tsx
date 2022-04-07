@@ -1,7 +1,7 @@
-import React from 'react'
 import { HeatMapGrid } from 'react-grid-heatmap'
 import './GridHeatmap.css'
 import { Typography } from '@mui/material';
+import { Box } from '@mui/system';
 
 interface color {
     name?: string,
@@ -21,30 +21,22 @@ export interface HeatmapProps {
     };
 }
 
-
-const colorItem = {
-    width: '13.2px',
-    height: '13.2px',
-    borderRadius: '3.51971px',
-    marginLeft: '5px'
-}
-
-const ColorPlates = ({ colors }) => {
+const ColorPlates = ({ colors }: Array<color> | any) => {
     return (
         <>
-            <div className="colorPlate">
+            <Box className="grid__legendContainer">
                 {
-                    colors.map((item, index) => {
+                    colors.map((item: any) => {
                         return (
                             <>
-                                <div style={{ ...colorItem, backgroundColor: `${item.color_code}` }}>
-                                </div>
+                                <Box className='grid__legendItem' style={{ backgroundColor: `${item.color_code}` }}>
+                                </Box>
                                 <Typography variant='subtitle2'>{item.name}</Typography>
                             </>
                         )
                     })
                 }
-            </div>
+            </Box>
         </>
     )
 }
@@ -64,22 +56,13 @@ const defaultColors = [
 
 const GridHeatmap = ({ colors = defaultColors, data, xLabels, yLabels, cellSize }: HeatmapProps) => {
     return (
-        <div
-            style={{
-                // width: `${size}vw`
-                width: 'max-content'
-            }}
-        >
-            {/* {colorPlates(colors)} */}
+        <Box className='grid__chartContainer'>
             <ColorPlates colors={colors} />
             <HeatMapGrid
                 data={data}
                 xLabels={xLabels}
                 yLabels={yLabels}
-                // Reder cell with tooltip
-                // cellRender={(x, y, value) => (
-                //   <div title={`Pos(${x}, ${y}) = ${value}`}>{value}</div>
-                // )}
+
                 xLabelsStyle={(index) => ({
                     color: 'black',
                     fontSize: '.8rem'
@@ -93,18 +76,15 @@ const GridHeatmap = ({ colors = defaultColors, data, xLabels, yLabels, cellSize 
                 cellStyle={(_x, _y, ratio) => ({
                     background: ratio > 0.66 ? `${colors[0].color_code}` : ratio > 0.33 ? `${colors[1].color_code}` : `${colors[2].color_code}`,
                     borderRadius: 0,
-                    // margin: '2.63978px 0px',
                     width: cellSize.width,
                     height: cellSize.height,
 
                 })}
                 cellHeight='2rem'
                 xLabelsPos='bottom'
-                // onClick={(x, y) => alert(`Clicked (${x}, ${y})`)}
                 yLabelsPos='left'
-            // square
             />
-        </div>
+        </Box>
     )
 }
 

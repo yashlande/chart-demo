@@ -159,11 +159,10 @@ const Template: Story<ApexHeatmapProps> = (args) => <ApexHeatmap {...args} />
 export const Default = Template.bind({});
 
 Default.args = {
-    chartSize: {
+    size: {
         width: 800,
         height: 300
     },
-    // colors,
     data: data3,
     xLabels,
     showToolbar: false,
