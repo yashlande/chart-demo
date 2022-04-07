@@ -10,7 +10,6 @@ interface color {
 
 export interface HeatmapProps {
     size?: string;
-    // colors?: Array<string>;
     colors?: Array<color>;
     data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
