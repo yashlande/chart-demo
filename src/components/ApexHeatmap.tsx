@@ -10,14 +10,14 @@ interface rangeColor {
 }
 
 export interface ApexHeatmapProps {
-    size?: {
+    size: {
         width: number,
         height: number
     };
-    showToolbar: boolean;
-    data?: Array<Array<Number>> | any;
-    xLabels?: Array<string | any>;
-    rangeColors?:Array<rangeColor>;
+    showToolbar?: boolean;
+    data: Array<Array<Number>> | any;
+    xLabels: Array<string | any>;
+    rangeColors:Array<rangeColor>;
 }
 
 const colorPlates = (colors: Array<rangeColor>) => {

@@ -11,9 +11,9 @@ interface color {
 export interface HeatmapProps {
     size?: string;
     colors?: Array<color>;
-    data?: Array<Array<Number>> | any;
-    xLabels?: Array<string | any>;
-    yLabels?: Array<string | any>;
+    data: Array<Array<Number>> | any;
+    xLabels: Array<string | any>;
+    yLabels: Array<string | any>;
     cellSize: {
         width: string,
         height: string
@@ -62,7 +62,7 @@ const GridHeatmap = ({ colors = defaultColors, data, xLabels, yLabels, cellSize 
                 xLabels={xLabels}
                 yLabels={yLabels}
 
-                xLabelsStyle={(index) => ({
+                xLabelsStyle={() => ({
                     color: 'black',
                     fontSize: '.8rem'
                 })}
