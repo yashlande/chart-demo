@@ -15,7 +15,7 @@ export interface ApexHeatmapProps {
         height: number
     };
     showToolbar: boolean;
-    colors?: Array<string>;
+    // colors?: Array<string>;
     data?: Array<Array<Number>> | any;
     xLabels?: Array<string | any>;
     rangeColors?:Array<rangeColor>;
@@ -51,9 +51,9 @@ const colorPlates = (colors: Array<rangeColor>) => {
 }
 
 
-function ApexHeatmap({ chartSize, colors = ["#E62B47", "#FF6E84", "#FFCBD3"], data, xLabels, showToolbar, rangeColors }: ApexHeatmapProps) {
+function ApexHeatmap({ chartSize, data, xLabels, showToolbar, rangeColors }: ApexHeatmapProps) {
 
-    const [state, setState] = useState({
+    const configure={
         series: data,
         options: {
             plotOptions: {
@@ -78,7 +78,7 @@ function ApexHeatmap({ chartSize, colors = ["#E62B47", "#FF6E84", "#FFCBD3"], da
             dataLabels: {
                 enabled: false
             },
-            colors: colors,
+            // colors: colors,
             xaxis: {
                 type: 'category',
                 categories: xLabels
@@ -92,11 +92,11 @@ function ApexHeatmap({ chartSize, colors = ["#E62B47", "#FF6E84", "#FFCBD3"], da
                 }
             }
         },
-    })
+    }
     return (
         <div>
             {colorPlates(rangeColors!)}
-            <Chart options={state.options} series={state.series} type="heatmap" width={chartSize?.width} height={chartSize?.height} />
+            <Chart options={configure.options} series={configure.series} type="heatmap" width={chartSize?.width} height={chartSize?.height} />
         </div>
     )
 }

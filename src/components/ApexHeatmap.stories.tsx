@@ -163,7 +163,7 @@ Default.args = {
         width: 800,
         height: 300
     },
-    colors,
+    // colors,
     data: data3,
     xLabels,
     showToolbar: false,
