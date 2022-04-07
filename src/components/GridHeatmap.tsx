@@ -29,7 +29,7 @@ const colorItem = {
     marginLeft: '5px'
 }
 
-const colorPlates = (colors: Array<color>) => {
+const ColorPlates = ({ colors }) => {
     return (
         <>
             <div className="colorPlate">
@@ -70,7 +70,8 @@ const GridHeatmap = ({ colors = defaultColors, data, xLabels, yLabels, cellSize 
                 width: 'max-content'
             }}
         >
-            {colorPlates(colors)}
+            {/* {colorPlates(colors)} */}
+            <ColorPlates colors={colors} />
             <HeatMapGrid
                 data={data}
                 xLabels={xLabels}
