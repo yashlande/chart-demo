@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import Chart from 'react-apexcharts'
+import styled from 'styled-components';
 import './ApexHeatmap.css'
 
 interface rangeColor {
@@ -20,6 +21,10 @@ export interface ApexHeatmapProps {
     rangeColors:Array<rangeColor>;
 }
 
+const Legend=styled(Box)`
+    background-color: ${(props:any)=>props.bgcolor};
+`
+
 const colorPlates = (colors: Array<rangeColor>) => {
     return (
         <>
@@ -28,8 +33,8 @@ const colorPlates = (colors: Array<rangeColor>) => {
                     colors.map((item) => {
                         return (
                             <>
-                                <Box className='apex__legendItem' style={{ backgroundColor: `${item.color}` }}>
-                                </Box>
+                                <Legend className='apex__legendItem' bgcolor={item.color}>
+                                </Legend>
                                 <Typography variant='subtitle2'>{item.name}</Typography>
                             </>
                         )

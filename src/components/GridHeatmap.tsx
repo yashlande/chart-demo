@@ -2,6 +2,7 @@ import { HeatMapGrid } from 'react-grid-heatmap'
 import './GridHeatmap.css'
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import styled from 'styled-components'
 
 interface color {
     name?: string,
@@ -20,6 +21,10 @@ export interface HeatmapProps {
     };
 }
 
+const Legend=styled(Box)`
+    background-color: ${(props:any)=>props.bgcolor};
+`
+
 const ColorPlates = ({ colors }: Array<color> | any) => {
     return (
         <>
@@ -28,8 +33,10 @@ const ColorPlates = ({ colors }: Array<color> | any) => {
                     colors.map((item: any) => {
                         return (
                             <>
-                                <Box className='grid__legendItem' style={{ backgroundColor: `${item.color_code}` }}>
-                                </Box>
+                                {/* <Box className='grid__legendItem' style={{ backgroundColor: `${item.color_code}` }}>
+                                </Box> */}
+                                <Legend className='grid__legendItem' bgcolor={item.color_code}>
+                                </Legend>
                                 <Typography variant='subtitle2'>{item.name}</Typography>
                             </>
                         )
