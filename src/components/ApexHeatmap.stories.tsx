@@ -160,8 +160,8 @@ export const Default = Template.bind({});
 
 Default.args = {
     size: {
-        width: 800,
-        height: 300
+        width: "100%",
+        height: "200%"
     },
     data: data3,
     xLabels,

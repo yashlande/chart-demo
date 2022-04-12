@@ -12,8 +12,8 @@ interface rangeColor {
 
 export interface ApexHeatmapProps {
     size: {
-        width: number,
-        height: number
+        width: number | string,
+        height: number | string
     };
     showToolbar?: boolean;
     data: Array<Array<Number>> | any;
